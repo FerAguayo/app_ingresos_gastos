@@ -1,6 +1,7 @@
 from app_ingresos_gastos import app
 from flask import render_template,request,redirect
 import csv 
+from datetime import date
 
 @app.route("/")
 def index():
@@ -22,10 +23,15 @@ def index():
 @app.route("/new",methods=["GET","POST"])
 def new():
     if request.method == "POST":
-        fichero = open("app_ingresos_gastos/data/movimientos.csv","a",newline="")
-        lectura = csv.writer(fichero, delimiter=",", quotechar='"')
-        lectura.writerow([request.form["fecha"],request.form["concepto"],request.form["monto"]])
-        fichero.close()
+        fecha_actual = str(date.today())
+        
+        if request.form["fecha"] > fecha_actual:
+            return render_template("new.html",title=" Registro",titulo="Registro",boton="Guardar")
+        else:
+            fichero = open("app_ingresos_gastos/data/movimientos.csv","a",newline="")
+            lectura = csv.writer(fichero, delimiter=",", quotechar='"')
+            lectura.writerow([request.form["fecha"],request.form["concepto"],request.form["monto"]])
+            fichero.close()
         
         return redirect("/")
     

@@ -29,7 +29,7 @@ lectura = csv.reader(mifichero, delimiter=",",quotechar='"')
 for items in lectura:
     print(items)
 """
-
+"""
 import csv 
 
 mifichero = open("app_ingresos_gastos/data/movimientos.csv","a",newline="")
@@ -37,5 +37,9 @@ lectura = csv.writer(mifichero, delimiter=",", quotechar='"')
 lectura.writerow(["05/02/2026","merienda","-16"])
 
 mifichero.close()
+"""
+from datetime import date
+print(str(date.today()))
 
-"""En la clase anterior nos dijo que con "GET" no podíamos meter datos porque te lo ponía en la barra de direcciones y no era seguro y lo cambiamos a "POST" para hacerlo privado, ahora lo que enseña es como meter esos datos dentro del .csv para que se añadan al listado, pero son muchas cosas nuevas en un rato, la verdad"""
+if str(date.today()) > "2026-02-06":
+    print("es la fecha de hoy")
