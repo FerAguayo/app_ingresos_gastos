@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block pageBase %}
-{{ lista }}
+
 
       <table>
         <tr>
@@ -10,9 +10,9 @@
         </tr>
         {% for dato in lista %}
             <tr>
-          <td>{{dato["fecha"]}}</td>
-          <td>{{dato["concepto"]}}</td>
-          <td>{{dato["monto"]}}</td>
+          <td>{{dato[0]}}</td>
+          <td>{{dato[1]}}</td>
+          <td>{{dato[2]}}</td>
         {% endfor %}
        <!-- <tr>
           <td>01/09/2025</td>

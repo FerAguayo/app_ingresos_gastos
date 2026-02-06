@@ -2,14 +2,14 @@
 
 {% block pageBase %}
  <h2>{{ titulo }} de Ingresos y Gastos</h2>       
- <form>
+ <form method="post" action="/new">
             <label for="fecha">Fecha:</label><br>
             <input type="date" id="fecha" name="fecha"><br>
             <label for="concepto">concepto:</label><br>
             <input type="text" id="concepto" name="concepto"><br><br>
             <label for="monto">Monto:</label><br>
             <input type="number" id="monto" name="monto"><br><br>
-            <input type="button" value="{{ boton }}">
+            <button type="submit">{{ boton }}</button>
         </form> 
         <br>
         <button>
