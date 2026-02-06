@@ -1,5 +1,5 @@
 from app_ingresos_gastos import app
-from flask import render_template,request
+from flask import render_template,request,redirect
 import csv 
 
 @app.route("/")
@@ -22,7 +22,13 @@ def index():
 @app.route("/new",methods=["GET","POST"])
 def new():
     if request.method == "POST":
-        return f"Esto debería registrarse{request.form}"
+        fichero = open("app_ingresos_gastos/data/movimientos.csv","a",newline="")
+        lectura = csv.writer(fichero, delimiter=",", quotechar='"')
+        lectura.writerow([request.form["fecha"],request.form["concepto"],request.form["monto"]])
+        fichero.close()
+        
+        return redirect("/")
+    
     else:
         return render_template("new.html",title=" Registro",titulo="Registro",boton="Guardar")
 
