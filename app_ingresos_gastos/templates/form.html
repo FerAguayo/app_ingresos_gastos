@@ -4,15 +4,23 @@
  <h2>{{ titulo }} de Ingresos y Gastos</h2>       
  <form method="post" action="/new">
             <label for="fecha">Fecha:</label><br>
-            <input type="date" id="fecha" name="fecha"><br>
+            <input type="date" id="fecha" name="fecha" value="{{dataform['fecha']}}"><br>
             <label for="concepto">concepto:</label><br>
-            <input type="text" id="concepto" name="concepto"><br><br>
+            <input type="text" id="concepto" name="concepto" value="{{dataform['concepto']}}"><br><br>
             <label for="monto">Monto:</label><br>
-            <input type="number" id="monto" name="monto"><br><br>
+            <input type="number" id="monto" name="monto" step="0.01" value="{{dataform['monto']}}"><br><br>
             <button type="submit">{{ boton }}</button>
         </form> 
         <br>
         <button>
             <a href="/">Volver</a>
         </button>
+        <div style="color: red;"> 
+            <ul>
+                {% for item in error %}
+                <li>{{item}}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
  {% endblock %}
